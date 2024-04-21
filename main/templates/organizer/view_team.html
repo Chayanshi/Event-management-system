@@ -1,0 +1,53 @@
+{% extends "organizer/base.html" %}
+{% load static %}
+
+{% block title %}Team Details{% endblock %}
+{% block avatar %}src="{{ log_user_avatar }}"{% endblock %}
+{% block username %}{{log_user_first|upper}} {{log_user_last|upper}}{% endblock %}
+{% block role %}{{log_user_role}}{% endblock %}
+
+{% block main_content %}
+
+<div class="main-panel">
+    <div class="row" style="margin-left: 5%;">
+        <div class="col-lg-6 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">Details of the Team "{{ team_data.team_name }}"</h3>
+              </p>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Details</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Team Name</td>
+                      <td>{{ team_data.team_name }}</td>
+                    </tr>
+                    <tr>
+                      <td>Coach</td>
+                      <td>{{ team_data.coach.firstname }} {{ team_data.coach.lastname }}</td>
+                    </tr>
+                    <tr>
+                      <td>Players</td>
+                      <td>
+                        {% for player in team_data.player %}
+                          {{ player.firstname }} {{ player.lastname }}<br><br>
+                        {% endfor %}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- content-wrapper ends -->
+</div>
+
+{% endblock %}

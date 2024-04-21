@@ -1,0 +1,58 @@
+{% extends "organizer/base.html" %}
+{% load static %}
+
+{% block title %}Edit Match{% endblock %}
+{% block avatar %}src="{{ log_user_avatar }}"{% endblock %}
+{% block username %}{{log_user_first|upper}} {{log_user_last|upper}}{% endblock %}
+{% block role %}{{log_user_role}}{% endblock %}
+
+{% block main_content %}
+<div class="main-panel">
+  <div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title">Edit Match</h2>
+        <form class="forms-sample" method="POST" action="{% url 'Edit_match' type=type id=id %}">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="exampleSelectEvent">Event</label>
+            <select class="form-control" id="exampleSelectEvent" name="event">
+              {% for event_name in event_names %}
+                <option value="{{ event_name }}">{{ event_name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleSelectTeam1">Team 1</label>
+            <select class="form-control" id="exampleSelectTeam1" name="team1">
+              {% for team_name in team_names %}
+                <option value="{{ team_name }}">{{ team_name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleSelectTeam2">Team 2</label>
+            <select class="form-control" id="exampleSelectTeam2" name="team2">
+              {% for team_name in team_names %}
+                <option value="{{ team_name }}">{{ team_name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="inputDate">Date</label>
+            <input type="date" class="form-control" id="inputDate" name="date">
+          </div>
+          <div class="form-group">
+            <label for="inputResult">Result</label>
+            <input type="text" class="form-control" id="inputResult" name="result" value='None'>
+          </div>
+          <button type="submit" class="btn btn-primary mr-2">Submit</button>
+          <button class="btn btn-dark">
+            <a href="{% url 'matches' type %}" style="text-decoration: none;">Cancel</a>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

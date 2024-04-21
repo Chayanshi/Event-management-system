@@ -1,0 +1,48 @@
+{% extends "organizer/base.html" %}
+{% load static %}
+
+{% block title %}Edit Team{% endblock %}
+{% block avatar %}src="{{ log_user_avatar }}"{% endblock %}
+{% block username %}{{log_user_first|upper}} {{log_user_last|upper}}{% endblock %}
+{% block role %}{{log_user_role}}{% endblock %}
+
+
+{% block main_content %}
+<div class="main-panel">
+  <div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title">Edit Team</h2>
+        <form class="forms-sample" method="post" action="{% url 'Edit_team' type=type name=team_data.team_name %}" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="exampleInputName1">Name</label>
+            <input type="text" class="form-control" id="exampleInputName1" name="name" placeholder="Name" value="{{ team_data.team_name }}">
+          </div>
+          <div class="form-group">
+            <label for="exampleSelectGender">Coach of the team</label>
+            <select class="form-control" id="exampleSelectEvent" name="coach">
+              {% for coach in coaches %}
+                <option value="{{ coach.firstname }} {{ coach.lastname }}">{{ coach.firstname }} {{ coach.lastname }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleSelectTeams">Players</label>
+            {% for player in players %}
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="team{{ forloop.counter }}" name="players" value="{{ player.email }}" {% if player.email in team_data.player %}checked{% endif %}>
+
+                <label class="form-check-label" for="team{{ forloop.counter }}">{{ player.firstname }} {{ player.lastname }} - {{ player.email }}</label>
+              </div>
+            {% endfor %}
+          </div>
+          <button type="submit" class="btn btn-primary mr-2">Submit</button>
+          <button class="btn btn-dark"> <a href="{% url 'teams' type %}" style="text-decoration: none;">Cancel</a></button>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

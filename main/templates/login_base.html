@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Evento</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{% static 'login_pages/vendors/mdi/css/materialdesignicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'login_pages/vendors/css/vendor.bundle.base.css' %}">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="{% static 'login_pages/css/style.css' %}">
+    <!-- End layout styles -->
+    {% comment %} <link rel="shortcut icon" href="{% static 'login_pages/images/favicon.png' %}" /> {% endcomment %}
+  </head>
+
+<body>
+    {% block main_contain %}
+    {% endblock %}
+    <!-- plugins:js -->
+    <script src="{% static 'login_pages/vendors/js/vendor.bundle.base.js' %}"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="{% static 'login_pages/js/off-canvas.js' %}"></script>
+    <script src="{% static 'login_pages/js/hoverable-collapse.js' %}"></script>
+    <script src="{% static 'login_pages/js/misc.js' %}"></script>
+    <script src="{% static 'login_pages/js/settings.js' %}"></script>
+    <script src="{% static 'login_pages/js/todolist.js' %}"></script>
+    <!-- endinject -->
+</body>
+</html>

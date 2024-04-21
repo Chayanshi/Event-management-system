@@ -1,0 +1,24 @@
+{% extends "login_base.html" %}
+{% load static %}
+
+{% block main_contain %}
+<div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+      <div class="row w-100 m-0">
+        <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
+          <div class="card col-lg-4 mx-auto">
+            <div class="card-body px-5 py-5">
+              <h3 class="card-title text-center mb-3">Login As</h3>
+              <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-info btn-fw" style="padding: 15px;"><a href="{% url 'login' type=1 %}" style="color: whitesmoke;">Fans/Player/Coach</a></button>
+                <button type="button" class="btn btn-danger btn-fw" style="padding: 15px;"><a href="{% url 'login' type=2 %}" style="color: whitesmoke;">Organizer</a></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+      </div>
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "organizer/base.html" %}
+{% load static %}
+
+{% block title %}Match{% endblock %}
+{% block avatar %}src="{{ log_user_avatar }}"{% endblock %}
+{% block username %}{{log_user_first|upper}} {{log_user_last|upper}}{% endblock %}
+{% block role %}{{log_user_role}}{% endblock %}
+
+{% block main_content %}
+<div class="main-panel">
+    <div class="row" style="margin-left: 5%;">
+        <div class="col-lg-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Details of the match</h3>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Details</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ID</td>
+                                    <td>{{ data.id }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Event</td>
+                                    <td>{{ data.event }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Team 1</td>
+                                    <td>{{ data.team1 }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Team 2</td>
+                                    <td>{{ data.team2 }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Date</td>
+                                    <td>{{ data.date }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Result</td>
+                                    <td>{{ data.result }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

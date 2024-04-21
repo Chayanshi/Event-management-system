@@ -1,0 +1,68 @@
+{% extends "organizer/base.html" %}
+{% load static %}
+
+
+{% block title %}Volleyball Teams{% endblock %}
+{% block avatar %}src="{{ log_user_avatar }}"{% endblock %}
+{% block username %}{{log_user_first|upper}} {{log_user_last|upper}}{% endblock %}
+{% block role %}{{log_user_role}}{% endblock %}
+
+{% block main_content %}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+      <div class="d-flex justify-content-end mb-3">
+        <div class="add_button">
+            <a href="{% url 'Add_team' type %}"><button type="button" class="btn btn-danger btn-fw">Add</button></a>
+        </div>
+      </div>
+
+
+      <div class="row ">
+        <div class="col-12 grid-margin">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Teams List</h4>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th> Team Name </th>
+                      <th> Coach </th>
+                      <th> Players of Teams </th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for data in data %}
+                      <tr>
+                          <td>{{ data.team_name }}</td>
+                          <td>{{ data.coach_name }}</td>
+                          <td>
+                            {% for player_name in data.player_names %}
+                              {{ player_name}},
+                              {% if forloop.counter|divisibleby:2 %}<br>{% endif %}
+                            {% endfor %}
+                          </td>
+                          <td>
+                            <a href="{% url 'View_team' type=type name=data.team_name %}"><i class="fa fa-eye text-danger"></i></a>
+
+                              <a href="{% url 'Edit_team' type=type name=data.team_name %}"><i class="fa fa-pencil text-danger"></i></a>
+                              <a href="{% url 'Delete_team' type=type name=data.team_name %}"><i class="fa fa-trash text-danger"></i></a>
+                          </td>
+                      </tr>
+                    {% endfor %}
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- content-wrapper ends -->
+
+  </div>
+
+{% endblock %}

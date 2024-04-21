@@ -1,0 +1,148 @@
+{% extends "organizer/base.html" %}
+{% load static %}
+
+
+{% block title %}Volleyball event system{% endblock %}
+
+{% block avatar %}src="{{ log_user_avatar }}"{% endblock %}
+{% block username %}{{log_user_first|upper}} {{log_user_last|upper}}{% endblock %}
+{% block role %}{{log_user_role}}{% endblock %}
+
+{% block main_content %}
+<div class="main-panel">
+    <div class="content-wrapper">
+      
+      <div class="row">
+        <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <a href="{% url 'events' type %}">
+                <div class="row">
+                  <div class="col-9">
+                    <div class="d-flex align-items-center align-self-start">
+                      <h3 class="text-danger mb-0">{{ event_count }}</h3>
+                    </div>
+                  </div>
+                  <div class="col-3">
+                    <div class="icon icon-box-danger ">
+                      <span class="mdi mdi-arrow-top-right icon-item"></span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              
+              <h6 class="text-muted font-weight-normal">Events</h6>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <a href="{% url 'teams' type %}">
+                <div class="row">
+                  <div class="col-9">
+                    <div class="d-flex align-items-center align-self-start">
+                      <h3 class="text-danger mb-0">{{ team_count }}</h3>
+                    </div>
+                  </div>
+                  <div class="col-3">
+                    <div class="icon icon-box-danger">
+                      <span class="mdi mdi-arrow-top-right icon-item"></span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              
+              <h6 class="text-muted font-weight-normal">Teams</h6>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <a href="{% url 'matches' type %}">
+                <div class="row">
+                  <div class="col-9">
+                    <div class="d-flex align-items-center align-self-start">
+                      <h3 class="text-danger mb-0">{{ match_count }}</h3>
+                    </div>
+                  </div>
+                  <div class="col-3">
+                    <div class="icon icon-box-danger">
+                      <span class="mdi mdi-arrow-bottom-left icon-item"></span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              
+              <h6 class="text-muted font-weight-normal">Matches</h6>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <a href="{% url 'users' type %}">
+                <div class="row">
+                  <div class="col-9">
+                    <div class="d-flex align-items-center align-self-start">
+                      <h3 class="text-danger mb-0">{{ user_count }}</h3>
+                    </div>
+                  </div>
+                  <div class="col-3">
+                    <div class="icon icon-box-danger ">
+                      <span class="mdi mdi-arrow-top-right icon-item"></span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              
+              <h6 class="text-muted font-weight-normal">Users</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="col-12 grid-margin">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Event List</h4>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th> Event Name </th>
+                      <th> Organizer </th>
+                      <th> Number of Teams </th>
+                      <th> Location </th>
+                      <th> Start Date </th>
+                      <th> End Date </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    
+                    {% for data in data %}
+                      <tr>
+                        <!-- {{data.id}} -->
+                          <td>{{ data.name }}</td>
+                          <td>{{ data.organizer }}</td>
+                          <td>{{ data.num_teams }}</td>
+                          <td>{{ data.location }}</td>
+                          <td>{{ data.start_date }}</td>
+                          <td>{{ data.end_date }}</td>
+                          
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- content-wrapper ends -->
+
+  </div>
+
+{% endblock %}

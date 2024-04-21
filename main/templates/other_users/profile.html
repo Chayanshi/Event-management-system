@@ -1,0 +1,49 @@
+{% extends "other_users/home_base.html" %}
+{% load static %}
+
+
+{% block title %}Profile{% endblock %}
+
+
+
+{% block main_contain %}
+<div class="hero overlay" style="background-image: url('{% static 'home/images/home-bg.png' %}');">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-5 mx-auto text-center">
+          <h1 class="text-white">Profile of {{logged_user.firstname}} {{logged_user.lastname}}</h1>
+          <p>{{logged_user.role}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  
+  <div class="container" style="margin-bottom:10%">
+    
+
+    <div class="row">
+      <div class="col-lg-12">
+        
+        <div class="d-flex team-vs" style="background-color:#ee1e46;height:250%" >
+          <div class="team-1 w-50" >
+            <div class="team-details w-50 text-center">
+              <h3>Name : {{logged_user.firstname}} {{logged_user.lastname}}</h3>
+              <ul class="list-unstyled">
+                <li>First Name : {{logged_user.firstname}}</li>
+                <li>Last name: {{logged_user.lastname}}</li>
+                <li>Role : {{logged_user.role}}</li>
+                <li>Email : {{logged_user.email}}</li>
+                <li>Phone : {{logged_user.phone}}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="team-2  w-50" style="background-image: url('{{logged_user.avatar }}'); background-size: 100% 100%;border-top-left-radius: 50%; border-bottom-left-radius: 50%;">
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

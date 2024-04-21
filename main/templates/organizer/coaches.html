@@ -1,0 +1,94 @@
+{% extends "organizer/base.html" %}
+{% load static %}
+
+
+{% block title %}Volleyball Coaches{% endblock %}
+{% block avatar %}src="{{ log_user_avatar }}"{% endblock %}
+{% block username %}{{log_user_first|upper}} {{log_user_last|upper}}{% endblock %}
+{% block role %}{{log_user_role}}{% endblock %}
+
+{% block main_content %}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+      <div class="row ">
+        <div class="col-12 grid-margin">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Coaches List</h4>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th> Event Name </th>
+                      <th> Organizer </th>
+                      <th> Number of Teams </th>
+                      <th> Location </th>
+                      <th> Start Date </th>
+                      <th> End Date </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <span class="pl-2">Henry Klein</span>
+                      </td>
+                      <td> 02312 </td>
+                      <td> $14,500 </td>
+                      <td> Dashboard </td>
+                      <td> Credit card </td>
+                      <td> 04 Dec 2019 </td>
+                    </tr>
+                    <tr>
+                        <td>
+                          <span class="pl-2">Henry Klein</span>
+                        </td>
+                        <td> 02312 </td>
+                        <td> $14,500 </td>
+                        <td> Dashboard </td>
+                        <td> Credit card </td>
+                        <td> 04 Dec 2019 </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span class="pl-2">Henry Klein</span>
+                        </td>
+                        <td> 02312 </td>
+                        <td> $14,500 </td>
+                        <td> Dashboard </td>
+                        <td> Credit card </td>
+                        <td> 04 Dec 2019 </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span class="pl-2">Henry Klein</span>
+                        </td>
+                        <td> 02312 </td>
+                        <td> $14,500 </td>
+                        <td> Dashboard </td>
+                        <td> Credit card </td>
+                        <td> 04 Dec 2019 </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span class="pl-2">Henry Klein</span>
+                        </td>
+                        <td> 02312 </td>
+                        <td> $14,500 </td>
+                        <td> Dashboard </td>
+                        <td> Credit card </td>
+                        <td> 04 Dec 2019 </td>
+                      </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- content-wrapper ends -->
+
+  </div>
+
+{% endblock %}

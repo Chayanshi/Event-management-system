@@ -1,0 +1,69 @@
+{% extends "organizer/base.html" %}
+{% load static %}
+
+{% block title %}Edit Events{% endblock %}
+{% block avatar %}src="{{ log_user_avatar }}"{% endblock %}
+{% block username %}{{log_user_first|upper}} {{log_user_last|upper}}{% endblock %}
+{% block role %}{{log_user_role}}{% endblock %}
+
+{% block main_content %}
+
+<div class="main-panel">
+  {{ context }}
+  <div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title">Edit Events</h2>
+        <form class="forms-sample" action="{% url 'Edit_event' type=type id=data.id %}" method="post">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="exampleInputName1">Name</label>
+            <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" value="{{ data.name }}" name="name">
+          </div>
+          <div class="form-group">
+            <label for="exampleSelectGender">Organizer</label>
+            <select class="form-control text-light" id="exampleSelectGender" name="organizer">
+                {% for organizer in organizers %}
+                    <option value="{{ organizer.email }}" {% if organizer.email == data.organizer %}selected{% endif %}>
+                        {{ organizer.firstname }} {{ organizer.lastname }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+          <div class="form-group">
+            <label for="exampleInputPassword4">Start Date</label>
+            <input type="date" class="form-control" placeholder="startdate" value="{{ data.start_date|date:'Y-m-d' }}" name="start_date">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword4">End Date</label>
+            <input type="date" class="form-control" placeholder="enddate" value="{{ data.end_date|date:'Y-m-d' }}" name="end_date">
+        </div>
+        <div class="form-group">
+          <label for="exampleSelectTeams">Teams</label>
+          {% for team in team_names %}  <!-- Use team_names here -->
+              <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="team{{ forloop.counter }}" name="teams" value="{{ team }}" {% if team in data.teams %}checked{% endif %}>
+                  <label class="form-check-label" for="team{{ forloop.counter }}">{{ team }}</label>
+              </div>
+          {% endfor %}
+      </div>
+
+          <div class="form-group">
+            <label for="exampleInputCity1">Location</label>
+            <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location" value="{{ data.location }}" name="location">
+          </div>
+
+          <div class="form-group">
+            <span style="color:red;">{{ error }}</span>
+          </div>
+
+          <button type="submit" class="btn btn-primary mr-2">Submit</button>
+          <button class="btn btn-dark"> <a href="{% url 'events' type %}" style="text-decoration: none;">Cancel</a></button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- content-wrapper ends -->
+</div>
+
+{% endblock %}

@@ -1,0 +1,113 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+}
+
+.login-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #ffffff;
+    box-shadow: -5px -5px 5px rgba(215, 215, 215, 0.34901960784313724), -5px -5px 5px 0px rgba(215, 215, 215,0.34901960784313724);
+    -webkit-box-shadow: -5px -5px 5px rgba(215, 215, 215, 0.34901960784313724), -5px -5px 5px 0px rgba(215, 215, 215, 0.34901960784313724) inset;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid rgba(121, 121, 121, 1);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.otp-button {
+    background-color: #B0D9B1;
+    color: black;
+    border: none;
+    padding: 8px 190px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 10PX;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.otp-button:hover{
+    background-color: #425743;
+    color: white;
+}
+.otp-input-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.otp-input {
+    flex: 1;
+    padding: 6px;
+    margin: 5px;
+    border: 1px solid #0c0b0b;
+    outline: none;
+    border-radius: 3PX;
+    text-align: center;
+    font-size: 18px;
+    width: 30px; 
+    height: 30px;
+} 
+
+.error-message {
+    display: flex;
+    color: red;
+    font-size: 10px;
+    text-align: right;
+}
+
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.71);
+    z-index: 1;
+}
+
+/* Styles for the dialog box */
+.dialog-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    color: green;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Media query for screens smaller than 768px */
+@media (max-width: 768px) {
+    .otp-input {
+        font-size: 16px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .otp-button {
+        padding: 10px 120px;
+        font-size: 12px;
+        font-size: 12px;
+        padding: 10px 120px;
+    }
+    .otp-input {
+        margin-right: 10px;
+    }
+    .otp-button {
+        font-size: 12px;
+        padding: 10px 120px;
+    }
+}
